@@ -46,9 +46,10 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         populateUI();
-        Picasso.with(this)
-                .load(sandwich.getImage())
-                .into(ingredientsIv);
+        if(!sandwich.getImage().isEmpty())
+            Picasso.with(this)
+                    .load(sandwich.getImage())
+                    .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
 
@@ -63,19 +64,23 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView textView = new TextView(this);
         textView = findViewById(R.id.also_known_tv );
-        textView.setText(sandwich.getAlsoKnownAs().toString());
+        if(!sandwich.getAlsoKnownAs().isEmpty())
+            textView.setText(sandwich.getAlsoKnownAs().toString());
 
         textView = new TextView(this);
         textView= findViewById(R.id.description_tv );
-        textView.setText(sandwich.getDescription());
+        if(!sandwich.getDescription().isEmpty())
+            textView.setText(sandwich.getDescription());
 
         textView = new TextView(this);
         textView= findViewById(R.id.ingredients_tv );
-        textView.setText(sandwich.getIngredients().toString());
+        if(!sandwich.getIngredients().isEmpty())
+            textView.setText(sandwich.getIngredients().toString());
 
         textView = new TextView(this);
         textView= findViewById(R.id.origin_tv );
-        textView.setText(sandwich.getPlaceOfOrigin());
+        if(!sandwich.getPlaceOfOrigin().isEmpty())
+            textView.setText(sandwich.getPlaceOfOrigin());
 
 
     }
